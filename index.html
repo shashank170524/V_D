@@ -3,89 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Valentine 💕</title>
+<title>Our Love Adventure 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Comic Sans MS', cursive;
-    background: linear-gradient(to bottom right, #ffb6c1, #ff69b4);
-    overflow: hidden;
-    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: radial-gradient(circle at top, #1a002b, #000);
     color: white;
+    overflow-x: hidden;
 }
 
-/* Floating Hearts */
-.heart {
-    position: absolute;
-    color: red;
-    font-size: 24px;
-    animation: floatUp 5s linear infinite;
+/* Animated Stars */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: moveStars 100s linear infinite;
+    opacity: 0.3;
 }
 
-@keyframes floatUp {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
+@keyframes moveStars {
+    from { transform: translate(0,0); }
+    to { transform: translate(-500px,-500px); }
 }
 
-/* Main Box */
-.container {
-    position: relative;
-    top: 20vh;
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
 }
 
 h1 {
-    font-size: 50px;
-    animation: pulse 1.5s infinite;
+    font-size: 60px;
+    text-shadow: 0 0 20px pink;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 700px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 button {
     padding: 15px 30px;
-    font-size: 18px;
     border: none;
-    border-radius: 30px;
-    background-color: white;
-    color: #ff1493;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #ff0080, #ff4da6);
+    color: white;
+    font-size: 18px;
     cursor: pointer;
     transition: 0.3s;
-    margin: 10px;
+    box-shadow: 0 0 15px pink;
 }
 
 button:hover {
-    background-color: #ff1493;
-    color: white;
     transform: scale(1.1);
+    box-shadow: 0 0 30px hotpink;
 }
 
-.message {
-    font-size: 22px;
-    margin-top: 20px;
-    min-height: 40px;
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    color: #ff4da6;
 }
 
-.popup {
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Love Letter Modal */
+.modal {
     display: none;
     position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    color: #ff1493;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px pink;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
 }
 
-.popup button {
-    background: #ff69b4;
-    color: white;
+.modal-content {
+    background: #fff;
+    color: #ff0080;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #000;
 }
 </style>
 </head>
@@ -93,63 +127,70 @@ button:hover {
 <body>
 
 <audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
 </audio>
 
-<div class="container">
-    <h1>Happy Valentine's Day 💕🐻</h1>
-    <p class="message" id="loveText"></p>
-    <button onclick="showLove()">Click for Love 💌</button>
-    <button onclick="openPopup()">Will You Be Mine? 💖</button>
+<section>
+    <h1>Our Love Adventure 🌍💖</h1>
+    <p>From strangers to soulmates… our journey is the most beautiful adventure ever written in the stars ✨</p>
+    <button onclick="scrollToNext()">Start Our Journey 🚀</button>
+</section>
+
+<section style="background:linear-gradient(to right,#2b003d,#660033);">
+    <h2>Chapter 1: The Beginning 💕</h2>
+    <p>The day we met, my world changed forever. Every heartbeat whispered your name.</p>
+</section>
+
+<section style="background:linear-gradient(to right,#000428,#004e92);">
+    <h2>Chapter 2: The Adventure 🌊</h2>
+    <p>Through laughs, challenges, dreams, and memories — we grew stronger together.</p>
+    <button onclick="openLetter()">Open Love Letter 💌</button>
+</section>
+
+<section style="background:linear-gradient(to right,#3a1c71,#d76d77,#ffaf7b);">
+    <h2>Final Chapter: Forever ♾️</h2>
+    <p>No matter where life takes us, I choose you. Today. Tomorrow. Always.</p>
+    <button onclick="proposal()">Will You Stay With Me Forever? 💍</button>
+</section>
+
+<div class="modal" id="loveModal">
+    <div class="modal-content">
+        <h2>My Love 💖</h2>
+        <p>You are my adventure, my peace, my home. Every moment with you feels like magic.</p>
+        <button onclick="closeLetter()">Close 💕</button>
+    </div>
 </div>
 
-<div class="popup" id="popupBox">
-    <h2>Will You Be My Valentine? 🥺💞</h2>
-    <button onclick="yesLove()">Yes 🥰</button>
-    <button onclick="noLove()">No 😢</button>
-</div>
+<footer>
+    Made With Endless Love ❤️
+</footer>
 
 <script>
-// Floating Hearts
+function scrollToNext() {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+}
+
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "💖";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
+    setTimeout(() => heart.remove(), 6000);
 }
-setInterval(createHeart, 300);
+setInterval(createHeart, 400);
 
-// Typing Love Message
-const text = "You are my Dudu, I am your Bubu 🐻💕 Forever and Always!";
-let index = 0;
-
-function showLove() {
-    if(index < text.length) {
-        document.getElementById("loveText").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(showLove, 50);
-    }
+function openLetter() {
+    document.getElementById("loveModal").style.display = "flex";
 }
 
-// Popup
-function openPopup() {
-    document.getElementById("popupBox").style.display = "block";
+function closeLetter() {
+    document.getElementById("loveModal").style.display = "none";
 }
 
-function yesLove() {
-    alert("Yayyyyy!! Dudu Bubu Foreverrrr 🥰💕🐻");
-    document.getElementById("popupBox").style.display = "none";
-}
-
-function noLove() {
-    alert("No option available 😜 You are mine forever! 💖");
+function proposal() {
+    alert("Forever and Always — It's You and Me 💍💖✨");
 }
 </script>
 
