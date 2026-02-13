@@ -301,41 +301,64 @@ document.getElementById("meter").innerText=love+"%";
 /* Quiz */
 function loveQuiz(){
 let answer=prompt("Who loves more? (me/you)");
-alert("Correct answer: Both equally forever 💕");
+alert(
+"No matter what the answer is...\n\n" +
+"We both love each other endlessly.\n" +
+"Since 9th February 2026,\n" +
+"the first day we spent so beautifully together,\n" +
+"I knew my heart chose you forever 💕"
+);
 }
 
 /* Spin */
 function spinWheel(){
-const messages=["You are my sunshine ☀️","My heart beats for you 💓","Forever yours 💍"];
+const messages=[
+"You are my sunshine on my darkest days.\n\nFrom 9th February 2026,\nour first beautiful day together,\nyou became my happiest memory.\nAnd every day after that feels magical because of you ☀️",
+
+"My heart beats differently when you're around.\n\nThat first day — 9th February 2026 —\nwas the beginning of something pure.\nSomething soft. Something forever 💓",
+
+"With you, love feels safe.\n\n9th February 2026 wasn’t just a date,\nit was the day my world changed.\nAnd I would relive it a thousand times for you 💍"
+];
+
 alert(messages[Math.floor(Math.random()*messages.length)]);
 }
 
 /* Compliment */
 function compliment(){
 const texts=[
-"You make my world brighter.",
-"Your smile is my favorite view.",
-"You are my forever adventure."
+"You make my world brighter in ways I can’t explain.\n\nOn 9th February 2026,\nwhen we spent our first beautiful day together,\nI realized how special you truly are.\nYour smile still gives me the same peace.",
+
+"Your smile is my favorite view.\n\nThat first day we shared — 9th February 2026 —\nremains one of my most precious memories.\nEvery laugh, every moment felt right.\nYou are my forever adventure.",
+
+"You are not just someone I love.\nYou are my comfort, my peace, my happiness.\n\nSince 9th February 2026,\nmy heart has only grown closer to yours.\nAnd I choose you, every single day."
 ];
-document.getElementById("complimentText").innerText=texts[Math.floor(Math.random()*texts.length)];
+
+document.getElementById("complimentText").innerText=
+texts[Math.floor(Math.random()*texts.length)];
 }
 
 /* Comfort */
 function comfortMode(){
 document.body.style.background="#2c003e";
-alert("No matter what, I'm here for you 💞");
+alert(
+"No matter what happens,\nI am always here for you.\n\nFrom 9th February 2026,\nour first beautiful day together,\nI promised myself to protect your smile 💞"
+);
 }
 
 /* Apology */
 function apology(){
-alert("Even when we argue, I choose you every time ❤️");
+alert(
+"Even when we argue,\nI never stop loving you.\n\nSince 9th February 2026,\nthat first day we spent so perfectly,\nI knew you were worth choosing every single time ❤️"
+);
 }
 
 /* Secret */
 function openSecret(){
 let pass=prompt("Enter our secret word:");
 if(pass==="love"){
-alert("You are my once in a lifetime.");
+alert(
+"You are my once in a lifetime.\n\n9th February 2026\nwas the beginning of my favorite chapter.\nAnd I pray our story never ends 💕"
+);
 }else{
 alert("Wrong secret 😜");
 }
@@ -343,7 +366,9 @@ alert("Wrong secret 😜");
 
 /* Proposal */
 function celebrate(){
-alert("Forever begins now 💍✨");
+alert(
+"Forever begins now 💍✨\n\nFrom 9th February 2026,\nour very first beautiful day together,\nto every tomorrow we will share —\nI choose you. Always."
+);
 }
 
 function moveButton(){
@@ -353,6 +378,7 @@ btn.style.left=Math.random()*200-100+"px";
 btn.style.top=Math.random()*100-50+"px";
 }
 </script>
+
 
 </body>
 </html>
