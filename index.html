@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine 💕</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(to bottom right, #ffb6c1, #ff69b4);
+    overflow: hidden;
+    text-align: center;
+    color: white;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 24px;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Main Box */
+.container {
+    position: relative;
+    top: 20vh;
+}
+
+h1 {
+    font-size: 50px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    color: #ff1493;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #ff1493;
+    color: white;
+    transform: scale(1.1);
+}
+
+.message {
+    font-size: 22px;
+    margin-top: 20px;
+    min-height: 40px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: #ff1493;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px pink;
+}
+
+.popup button {
+    background: #ff69b4;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+    <h1>Happy Valentine's Day 💕🐻</h1>
+    <p class="message" id="loveText"></p>
+    <button onclick="showLove()">Click for Love 💌</button>
+    <button onclick="openPopup()">Will You Be Mine? 💖</button>
+</div>
+
+<div class="popup" id="popupBox">
+    <h2>Will You Be My Valentine? 🥺💞</h2>
+    <button onclick="yesLove()">Yes 🥰</button>
+    <button onclick="noLove()">No 😢</button>
+</div>
+
+<script>
+// Floating Hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+setInterval(createHeart, 300);
+
+// Typing Love Message
+const text = "You are my Dudu, I am your Bubu 🐻💕 Forever and Always!";
+let index = 0;
+
+function showLove() {
+    if(index < text.length) {
+        document.getElementById("loveText").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(showLove, 50);
+    }
+}
+
+// Popup
+function openPopup() {
+    document.getElementById("popupBox").style.display = "block";
+}
+
+function yesLove() {
+    alert("Yayyyyy!! Dudu Bubu Foreverrrr 🥰💕🐻");
+    document.getElementById("popupBox").style.display = "none";
+}
+
+function noLove() {
+    alert("No option available 😜 You are mine forever! 💖");
+}
+</script>
+
+</body>
+</html>
