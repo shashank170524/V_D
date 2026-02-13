@@ -11,374 +11,408 @@
 <style>
 /* ---------------- GLOBAL ---------------- */
 :root{
---primary:#ff4d88;
---secondary:#a64dff;
---bg-dark:#0f0c29;
---bg-light:#fff0f5;
---glass:rgba(255,255,255,0.1);
+  --primary:#ff4d88;
+  --secondary:#a64dff;
+  --bg-dark:#0f0c29;
+  --bg-light:#fff0f5;
+  --glass:rgba(255,255,255,0.1);
 }
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
 }
 
 body{
-background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-color:white;
-overflow-x:hidden;
-transition:0.4s;
-}
-
-body.light{
-background:var(--bg-light);
-color:#333;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:white;
+  overflow-x:hidden;
+  transition:0.4s;
 }
 
 /* Loading Screen */
 #loader{
-position:fixed;
-width:100%;
-height:100%;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-font-size:28px;
-letter-spacing:2px;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  font-size:28px;
+  letter-spacing:2px;
 }
 
-/* Floating particles */
+/* Floating particles & hearts */
 body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:url('https://www.transparenttextures.com/patterns/stardust.png');
-animation:move 100s linear infinite;
-opacity:0.3;
-z-index:-1;
+  content:"";
+  position:fixed;
+  width:200%;
+  height:200%;
+  background:url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation:move 100s linear infinite;
+  opacity:0.3;
+  z-index:-1;
 }
 
 @keyframes move{
-from{transform:translate(0,0);}
-to{transform:translate(-500px,-500px);}
+  from{transform:translate(0,0);}
+  to{transform:translate(-500px,-500px);}
 }
 
+.floating-heart{
+  position:fixed;
+  font-size:24px;
+  color:#ff4d88;
+  animation:float 6s linear infinite;
+  z-index:-1;
+}
+
+@keyframes float{
+  0%{transform:translateY(0px) scale(1);}
+  50%{transform:translateY(-100px) scale(1.2);}
+  100%{transform:translateY(-200px) scale(1);}
+}
+
+/* ---------------- SECTIONS ---------------- */
 section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:40px 20px;
-text-align:center;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  text-align:center;
 }
 
-h1,h2{
-font-family:'Playfair Display',serif;
-margin-bottom:20px;
+h1,h2,h3,h4{
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
 }
 
 .glass{
-background:var(--glass);
-backdrop-filter:blur(15px);
-padding:30px;
-border-radius:20px;
-box-shadow:0 0 30px rgba(255,0,128,0.3);
+  background:var(--glass);
+  backdrop-filter:blur(15px);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 0 30px rgba(255,0,128,0.3);
 }
 
+/* ---------------- BUTTONS ---------------- */
 button{
-padding:12px 25px;
-border:none;
-border-radius:30px;
-background:linear-gradient(45deg,var(--primary),var(--secondary));
-color:white;
-cursor:pointer;
-transition:0.3s;
-margin:5px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,var(--primary),var(--secondary));
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+  margin:5px;
+  font-size:1rem;
 }
 
 button:hover{
-transform:scale(1.1);
-box-shadow:0 0 20px hotpink;
+  transform:scale(1.1);
+  box-shadow:0 0 20px hotpink;
 }
 
-/* Hero */
+/* ---------------- HERO ---------------- */
 #hero h1{
-font-size:3rem;
-animation:fadeIn 2s ease forwards;
+  font-size:3rem;
+  animation:fadeIn 2s ease forwards;
 }
 
 @keyframes fadeIn{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
-/* Timeline */
+/* ---------------- TIMELINE ---------------- */
 .timeline-card{
-margin:10px;
-padding:20px;
-cursor:pointer;
-transition:0.3s;
+  margin:10px;
+  padding:20px;
+  cursor:pointer;
+  transition:0.3s;
+  font-size:1.1rem;
 }
 
 .timeline-card:hover{
-transform:scale(1.05);
+  transform:scale(1.05);
 }
 
-/* Modal */
+/* ---------------- MODAL ---------------- */
 .modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-justify-content:center;
-align-items:center;
-z-index:1000;
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
 }
 
 .modal-content{
-background:white;
-color:#ff4d88;
-padding:30px;
-border-radius:15px;
-max-width:400px;
+  background:white;
+  color:#ff4d88;
+  padding:30px;
+  border-radius:15px;
+  max-width:400px;
+  text-align:center;
 }
 
-/* Love Meter */
+/* ---------------- LOVE METER ---------------- */
 #meter{
-width:200px;
-height:200px;
-border-radius:50%;
-border:10px solid hotpink;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-margin:20px;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  border:10px solid hotpink;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  font-weight:bold;
+  margin:10px auto 25px;
 }
 
-/* Memory Game */
+/* ---------------- MEMORY GAME ---------------- */
+#memoryBoard{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:15px;
+}
+
 .card{
-width:60px;
-height:60px;
-background:hotpink;
-margin:5px;
-display:inline-block;
-cursor:pointer;
+  width:60px;
+  height:60px;
+  background:hotpink;
+  margin:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  cursor:pointer;
+  border-radius:15px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px hotpink;
 }
 
 .hidden{
-background:#444 !important;
+  background:#444 !important;
+  color:transparent;
 }
 
-/* Heartbeat */
-.heartbeat:hover{
-animation:beat 0.8s infinite;
+/* ---------------- PLAYGROUND ---------------- */
+.playground{
+  max-width:600px;
+  margin:20px auto;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 0 40px rgba(255,0,128,0.3);
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(20px);
+  text-align:center;
 }
 
-@keyframes beat{
-0%{transform:scale(1);}
-50%{transform:scale(1.2);}
-100%{transform:scale(1);}
+.playground h3{
+  font-size:2rem;
+  margin-bottom:15px;
+  color:#ff4d88;
 }
 
-/* Responsive */
+.playground p{
+  margin-bottom:20px;
+  font-size:1rem;
+  color:#fff0f5;
+}
+
+.game-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
 @media(max-width:768px){
-h1{font-size:2rem;}
+  h1{font-size:2rem;}
+  .playground{padding:25px;}
+  .timeline-card{font-size:1rem;}
 }
 </style>
 </head>
 
 <body>
-
 <div id="loader">Loading Our Love...</div>
 
 <!-- HERO -->
 <section id="hero">
-<div class="glass">
-<h1>Our Love Story 💖</h1>
-<p>Every adventure begins with you...</p>
-<button onclick="scrollToSection('timeline')">Start Our Journey</button>
-</div>
+  <div class="glass">
+    <h1>Our Love Story 💖</h1>
+    <p>Bubu, I love uu a lot and with you the journey has been amazing. There have been times where I lost my mind but you stood there by my side and we made it together. Thank you for everything. Yours only.</p>
+    <button onclick="scrollToSection('timeline')">Start Our Journey</button>
+  </div>
 </section>
 
 <!-- TIMELINE -->
 <section id="timeline">
-<h2>Our Beautiful Memories</h2>
-<div class="timeline-card glass" onclick="openModal('The day we met changed everything ❤️')">First Meeting</div>
-<div class="timeline-card glass" onclick="openModal('Our first date was magical ✨')">First Date</div>
-<div class="timeline-card glass" onclick="openModal('Through every fight, we chose love 💕')">Our Growth</div>
+  <h2>Our Beautiful Memories</h2>
+  <div class="timeline-card glass" onclick="openModal('That garden meet was so amazing. Everyone around us that day was teasing us, knowing that something special was happening. The game of running and trying to escape being caught was so much fun, and that hug and kissss 💖')">First Meeting</div>
+  <div class="timeline-card glass" onclick="openModal('Yes, that day when we were in Aish\'s house. That day was full of fun and love... lots and lots of love 💕')">First Kiss</div>
+  <div class="timeline-card glass" onclick="openModal('This house was very good for us as well. We did many new things here... secrets not to mention 😉 but we had an amazing time here too 💖')">Near Bikaner Home</div>
+  <div class="timeline-card glass" onclick="openModal('This new flat has brought us new memories as well... the most beautiful recent one 💖')">New Flat</div>
+  <div class="timeline-card glass" onclick="openModal('Nothing to say about this... Touchwooooood 😘💖')">9th Feb</div>
 </section>
 
-<!-- FUN ACTIVITIES -->
-<section>
-<h2>Fun & Games 🎮</h2>
+<!-- LOVE PLAYGROUND -->
+<section id="fun-games">
+  <h2>Fun & Games 🎮</h2>
+  
+  <div class="glass playground">
+    <h3>Welcome to Our Love Playground 💖</h3>
+    <p>Play, laugh, and relive our sweetest memories!</p>
 
-<button onclick="loveQuiz()">Take Love Quiz</button>
-<button onclick="spinWheel()">Spin Love Wheel</button>
-<button onclick="increaseLove()">Love Meter</button>
+    <div class="game-buttons">
+      <button onclick="loveQuiz()">💌 Love Quiz</button>
+      <button onclick="spinWheel()">🎡 Spin Love Wheel</button>
+      <button onclick="increaseLove()">❤️ Love Meter</button>
+    </div>
 
-<div id="meter">0%</div>
+    <div id="meter">0%</div>
 
+    <h4>Memory Match 🃏</h4>
+    <div id="memoryBoard"></div>
+  </div>
 </section>
 
-<!-- REWARDS -->
-<section>
-<h2>Rewards 🎁</h2>
-<button onclick="compliment()">Why I Love You</button>
-<p id="complimentText"></p>
-</section>
-
-<!-- RELATIONSHIP MOMENTS -->
-<section>
-<h2>Relationship Moments</h2>
-<button onclick="comfortMode()">Comfort Mode</button>
-<button onclick="apology()">Cute Apology</button>
-</section>
-
-<!-- INTIMACY -->
-<section>
-<h2>Close Your Eyes 💞</h2>
-<div class="glass heartbeat">
-<p>You are my safe place. My peace. My forever.</p>
-</div>
-<button onclick="openSecret()">Private Love Letter</button>
-</section>
-
-<!-- PROPOSAL -->
-<section>
-<h2>Forever? 💍</h2>
-<button onclick="celebrate()">Yes</button>
-<button id="noBtn" onmouseover="moveButton()">No</button>
-</section>
-
-<!-- Modal -->
+<!-- MODAL -->
 <div class="modal" id="modal">
-<div class="modal-content">
-<p id="modalText"></p>
-<button onclick="closeModal()">Close</button>
-</div>
+  <div class="modal-content">
+    <p id="modalText"></p>
+    <button onclick="closeModal()">Close</button>
+  </div>
 </div>
 
 <script>
-/* Loader */
-window.onload=function(){
-setTimeout(()=>{document.getElementById("loader").style.display="none";},1500);
+/* ---------------- LOADER ---------------- */
+window.onload = function(){
+  setTimeout(()=>{
+    document.getElementById("loader").style.display="none";
+  },1500);
+
+  createFloatingHearts();
+  initMemoryGame();
 }
 
-/* Scroll */
+/* ---------------- SCROLL ---------------- */
 function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-/* Modal */
+/* ---------------- MODAL ---------------- */
 function openModal(text){
-document.getElementById("modalText").innerText=text;
-document.getElementById("modal").style.display="flex";
+  document.getElementById("modalText").innerText=text;
+  document.getElementById("modal").style.display="flex";
 }
 function closeModal(){
-document.getElementById("modal").style.display="none";
+  document.getElementById("modal").style.display="none";
 }
 
-/* Love Meter */
+/* ---------------- LOVE METER ---------------- */
 let love=0;
 function increaseLove(){
-if(love<100){
-love+=20;
-document.getElementById("meter").innerText=love+"%";
-}
+  if(love<100){
+    love+=20;
+    document.getElementById("meter").innerText = love + "%";
+    document.getElementById("meter").style.color = "hotpink";
+    document.getElementById("meter").style.fontWeight = "bold";
+  } else {
+    alert("Love is already overflowing! 💖💖💖");
+  }
 }
 
-/* Quiz */
+/* ---------------- LOVE QUIZ ---------------- */
 function loveQuiz(){
-let answer=prompt("Who loves more? (me/you)");
-alert(
-"No matter what the answer is...\n\n" +
-"We both love each other endlessly.\n" +
-"Since 9th February 2026,\n" +
-"the first day we spent so beautifully together,\n" +
-"I knew my heart chose you forever 💕"
-);
+  const questions = [
+    { q: "Who said 'I love you' first?", options: ["Me","You","Both at same time"], answer: "Both at same time" },
+    { q: "Where did we share our first kiss?", options:["Garden","Aish's house","Near Bikaner home"], answer:"Aish's house" },
+    { q: "Favorite memory together?", options:["First meeting","New flat","9th Feb"], answer:"All are special ❤️" }
+  ];
+  const randomQ = questions[Math.floor(Math.random()*questions.length)];
+  let choice = prompt(`${randomQ.q}\nOptions: ${randomQ.options.join(", ")}`);
+  if(choice.toLowerCase() === randomQ.answer.toLowerCase() || randomQ.answer.includes(choice)){
+    alert("Correct! 💖");
+  } else {
+    alert("Almost! But all love wins 💕");
+  }
 }
 
-/* Spin */
+/* ---------------- SPIN WHEEL ---------------- */
 function spinWheel(){
-const messages=[
-"You are my sunshine on my darkest days.\n\nFrom 9th February 2026,\nour first beautiful day together,\nyou became my happiest memory.\nAnd every day after that feels magical because of you ☀️",
-
-"My heart beats differently when you're around.\n\nThat first day — 9th February 2026 —\nwas the beginning of something pure.\nSomething soft. Something forever 💓",
-
-"With you, love feels safe.\n\n9th February 2026 wasn’t just a date,\nit was the day my world changed.\nAnd I would relive it a thousand times for you 💍"
-];
-
-alert(messages[Math.floor(Math.random()*messages.length)]);
+  const messages = ["You are my sunshine ☀️","My heart beats for you 💓","Forever yours 💍","A kiss for you 😘","Hug time 🤗","You make me smile every day 😊"];
+  alert(messages[Math.floor(Math.random()*messages.length)]);
 }
 
-/* Compliment */
-function compliment(){
-const texts=[
-"You make my world brighter in ways I can’t explain.\n\nOn 9th February 2026,\nwhen we spent our first beautiful day together,\nI realized how special you truly are.\nYour smile still gives me the same peace.",
+/* ---------------- MEMORY GAME ---------------- */
+const memoryEmojis = ["💖","😘","🏡","🎉","💍","😊","💓","🤗"];
+let memoryBoard, cards, shuffled, selected;
 
-"Your smile is my favorite view.\n\nThat first day we shared — 9th February 2026 —\nremains one of my most precious memories.\nEvery laugh, every moment felt right.\nYou are my forever adventure.",
-
-"You are not just someone I love.\nYou are my comfort, my peace, my happiness.\n\nSince 9th February 2026,\nmy heart has only grown closer to yours.\nAnd I choose you, every single day."
-];
-
-document.getElementById("complimentText").innerText=
-texts[Math.floor(Math.random()*texts.length)];
+function initMemoryGame(){
+  memoryBoard = document.getElementById("memoryBoard");
+  cards = [...memoryEmojis, ...memoryEmojis];
+  shuffled = cards.sort(()=>0.5-Math.random());
+  selected = [];
+  memoryBoard.innerHTML = "";
+  shuffled.forEach((emoji)=>{
+    let card = document.createElement("div");
+    card.className = "card hidden";
+    card.dataset.emoji = emoji;
+    card.addEventListener("click", ()=>{
+      if(card.classList.contains("hidden") && selected.length<2){
+        card.classList.remove("hidden");
+        card.innerText = emoji;
+        selected.push(card);
+        if(selected.length===2){
+          setTimeout(()=>{
+            if(selected[0].dataset.emoji === selected[1].dataset.emoji){
+              selected.forEach(c=>c.style.visibility="hidden");
+            } else {
+              selected.forEach(c=>{
+                c.classList.add("hidden");
+                c.innerText = "";
+              });
+            }
+            selected = [];
+          },800);
+        }
+      }
+    });
+    memoryBoard.appendChild(card);
+  });
 }
 
-/* Comfort */
-function comfortMode(){
-document.body.style.background="#2c003e";
-alert(
-"No matter what happens,\nI am always here for you.\n\nFrom 9th February 2026,\nour first beautiful day together,\nI promised myself to protect your smile 💞"
-);
-}
-
-/* Apology */
-function apology(){
-alert(
-"Even when we argue,\nI never stop loving you.\n\nSince 9th February 2026,\nthat first day we spent so perfectly,\nI knew you were worth choosing every single time ❤️"
-);
-}
-
-/* Secret */
-function openSecret(){
-let pass=prompt("Enter our secret word:");
-if(pass==="love"){
-alert(
-"You are my once in a lifetime.\n\n9th February 2026\nwas the beginning of my favorite chapter.\nAnd I pray our story never ends 💕"
-);
-}else{
-alert("Wrong secret 😜");
-}
-}
-
-/* Proposal */
-function celebrate(){
-alert(
-"Forever begins now 💍✨\n\nFrom 9th February 2026,\nour very first beautiful day together,\nto every tomorrow we will share —\nI choose you. Always."
-);
-}
-
-function moveButton(){
-let btn=document.getElementById("noBtn");
-btn.style.position="relative";
-btn.style.left=Math.random()*200-100+"px";
-btn.style.top=Math.random()*100-50+"px";
+/* ---------------- FLOATING HEARTS ---------------- */
+function createFloatingHearts(){
+  for(let i=0;i<15;i++){
+    let heart = document.createElement("div");
+    heart.className="floating-heart";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = 4 + Math.random()*4 + "s";
+    heart.innerText = "💖";
+    document.body.appendChild(heart);
+  }
 }
 </script>
-
-
 </body>
 </html>
