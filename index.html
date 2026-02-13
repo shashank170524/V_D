@@ -3,194 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Love Adventure 💖</title>
+<title>Our Love Story</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
+/* ---------------- GLOBAL ---------------- */
+:root{
+--primary:#ff4d88;
+--secondary:#a64dff;
+--bg-dark:#0f0c29;
+--bg-light:#fff0f5;
+--glass:rgba(255,255,255,0.1);
 }
 
-body {
-    background: radial-gradient(circle at top, #1a002b, #000);
-    color: white;
-    overflow-x: hidden;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
-/* Animated Stars */
-body::before {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-    animation: moveStars 100s linear infinite;
-    opacity: 0.3;
+body{
+background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+color:white;
+overflow-x:hidden;
+transition:0.4s;
 }
 
-@keyframes moveStars {
-    from { transform: translate(0,0); }
-    to { transform: translate(-500px,-500px); }
+body.light{
+background:var(--bg-light);
+color:#333;
 }
 
-section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
+/* Loading Screen */
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+font-size:28px;
+letter-spacing:2px;
 }
 
-h1 {
-    font-size: 60px;
-    text-shadow: 0 0 20px pink;
+/* Floating particles */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+animation:move 100s linear infinite;
+opacity:0.3;
+z-index:-1;
 }
 
-h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
+@keyframes move{
+from{transform:translate(0,0);}
+to{transform:translate(-500px,-500px);}
 }
 
-p {
-    max-width: 700px;
-    font-size: 20px;
-    margin-bottom: 20px;
-    line-height: 1.6;
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+text-align:center;
 }
 
-button {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 40px;
-    background: linear-gradient(45deg, #ff0080, #ff4da6);
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 15px pink;
+h1,h2{
+font-family:'Playfair Display',serif;
+margin-bottom:20px;
 }
 
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px hotpink;
+.glass{
+background:var(--glass);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,0,128,0.3);
 }
 
-/* Floating Hearts */
-.heart {
-    position: fixed;
-    bottom: -10px;
-    font-size: 20px;
-    animation: floatUp 6s linear infinite;
-    color: #ff4da6;
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,var(--primary),var(--secondary));
+color:white;
+cursor:pointer;
+transition:0.3s;
+margin:5px;
 }
 
-@keyframes floatUp {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px hotpink;
 }
 
-/* Love Letter Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
+/* Hero */
+#hero h1{
+font-size:3rem;
+animation:fadeIn 2s ease forwards;
 }
 
-.modal-content {
-    background: #fff;
-    color: #ff0080;
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 500px;
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
 }
 
-footer {
-    padding: 20px;
-    text-align: center;
-    background: #000;
+/* Timeline */
+.timeline-card{
+margin:10px;
+padding:20px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.timeline-card:hover{
+transform:scale(1.05);
+}
+
+/* Modal */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.modal-content{
+background:white;
+color:#ff4d88;
+padding:30px;
+border-radius:15px;
+max-width:400px;
+}
+
+/* Love Meter */
+#meter{
+width:200px;
+height:200px;
+border-radius:50%;
+border:10px solid hotpink;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+margin:20px;
+}
+
+/* Memory Game */
+.card{
+width:60px;
+height:60px;
+background:hotpink;
+margin:5px;
+display:inline-block;
+cursor:pointer;
+}
+
+.hidden{
+background:#444 !important;
+}
+
+/* Heartbeat */
+.heartbeat:hover{
+animation:beat 0.8s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1);}
+50%{transform:scale(1.2);}
+100%{transform:scale(1);}
+}
+
+/* Responsive */
+@media(max-width:768px){
+h1{font-size:2rem;}
 }
 </style>
 </head>
 
 <body>
 
-<audio autoplay loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
-</audio>
+<div id="loader">Loading Our Love...</div>
 
+<!-- HERO -->
+<section id="hero">
+<div class="glass">
+<h1>Our Love Story 💖</h1>
+<p>Every adventure begins with you...</p>
+<button onclick="scrollToSection('timeline')">Start Our Journey</button>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+<h2>Our Beautiful Memories</h2>
+<div class="timeline-card glass" onclick="openModal('The day we met changed everything ❤️')">First Meeting</div>
+<div class="timeline-card glass" onclick="openModal('Our first date was magical ✨')">First Date</div>
+<div class="timeline-card glass" onclick="openModal('Through every fight, we chose love 💕')">Our Growth</div>
+</section>
+
+<!-- FUN ACTIVITIES -->
 <section>
-    <h1>Our Love Adventure 🌍💖</h1>
-    <p>From strangers to soulmates… our journey is the most beautiful adventure ever written in the stars ✨</p>
-    <button onclick="scrollToNext()">Start Our Journey 🚀</button>
+<h2>Fun & Games 🎮</h2>
+
+<button onclick="loveQuiz()">Take Love Quiz</button>
+<button onclick="spinWheel()">Spin Love Wheel</button>
+<button onclick="increaseLove()">Love Meter</button>
+
+<div id="meter">0%</div>
+
 </section>
 
-<section style="background:linear-gradient(to right,#2b003d,#660033);">
-    <h2>Chapter 1: The Beginning 💕</h2>
-    <p>The day we met, my world changed forever. Every heartbeat whispered your name.</p>
+<!-- REWARDS -->
+<section>
+<h2>Rewards 🎁</h2>
+<button onclick="compliment()">Why I Love You</button>
+<p id="complimentText"></p>
 </section>
 
-<section style="background:linear-gradient(to right,#000428,#004e92);">
-    <h2>Chapter 2: The Adventure 🌊</h2>
-    <p>Through laughs, challenges, dreams, and memories — we grew stronger together.</p>
-    <button onclick="openLetter()">Open Love Letter 💌</button>
+<!-- RELATIONSHIP MOMENTS -->
+<section>
+<h2>Relationship Moments</h2>
+<button onclick="comfortMode()">Comfort Mode</button>
+<button onclick="apology()">Cute Apology</button>
 </section>
 
-<section style="background:linear-gradient(to right,#3a1c71,#d76d77,#ffaf7b);">
-    <h2>Final Chapter: Forever ♾️</h2>
-    <p>No matter where life takes us, I choose you. Today. Tomorrow. Always.</p>
-    <button onclick="proposal()">Will You Stay With Me Forever? 💍</button>
+<!-- INTIMACY -->
+<section>
+<h2>Close Your Eyes 💞</h2>
+<div class="glass heartbeat">
+<p>You are my safe place. My peace. My forever.</p>
+</div>
+<button onclick="openSecret()">Private Love Letter</button>
 </section>
 
-<div class="modal" id="loveModal">
-    <div class="modal-content">
-        <h2>My Love 💖</h2>
-        <p>You are my adventure, my peace, my home. Every moment with you feels like magic.</p>
-        <button onclick="closeLetter()">Close 💕</button>
-    </div>
+<!-- PROPOSAL -->
+<section>
+<h2>Forever? 💍</h2>
+<button onclick="celebrate()">Yes</button>
+<button id="noBtn" onmouseover="moveButton()">No</button>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<p id="modalText"></p>
+<button onclick="closeModal()">Close</button>
+</div>
 </div>
 
-<footer>
-    Made With Endless Love ❤️
-</footer>
-
 <script>
-function scrollToNext() {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+/* Loader */
+window.onload=function(){
+setTimeout(()=>{document.getElementById("loader").style.display="none";},1500);
 }
 
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-}
-setInterval(createHeart, 400);
-
-function openLetter() {
-    document.getElementById("loveModal").style.display = "flex";
+/* Scroll */
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-function closeLetter() {
-    document.getElementById("loveModal").style.display = "none";
+/* Modal */
+function openModal(text){
+document.getElementById("modalText").innerText=text;
+document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+document.getElementById("modal").style.display="none";
 }
 
-function proposal() {
-    alert("Forever and Always — It's You and Me 💍💖✨");
+/* Love Meter */
+let love=0;
+function increaseLove(){
+if(love<100){
+love+=20;
+document.getElementById("meter").innerText=love+"%";
+}
+}
+
+/* Quiz */
+function loveQuiz(){
+let answer=prompt("Who loves more? (me/you)");
+alert("Correct answer: Both equally forever 💕");
+}
+
+/* Spin */
+function spinWheel(){
+const messages=["You are my sunshine ☀️","My heart beats for you 💓","Forever yours 💍"];
+alert(messages[Math.floor(Math.random()*messages.length)]);
+}
+
+/* Compliment */
+function compliment(){
+const texts=[
+"You make my world brighter.",
+"Your smile is my favorite view.",
+"You are my forever adventure."
+];
+document.getElementById("complimentText").innerText=texts[Math.floor(Math.random()*texts.length)];
+}
+
+/* Comfort */
+function comfortMode(){
+document.body.style.background="#2c003e";
+alert("No matter what, I'm here for you 💞");
+}
+
+/* Apology */
+function apology(){
+alert("Even when we argue, I choose you every time ❤️");
+}
+
+/* Secret */
+function openSecret(){
+let pass=prompt("Enter our secret word:");
+if(pass==="love"){
+alert("You are my once in a lifetime.");
+}else{
+alert("Wrong secret 😜");
+}
+}
+
+/* Proposal */
+function celebrate(){
+alert("Forever begins now 💍✨");
+}
+
+function moveButton(){
+let btn=document.getElementById("noBtn");
+btn.style.position="relative";
+btn.style.left=Math.random()*200-100+"px";
+btn.style.top=Math.random()*100-50+"px";
 }
 </script>
 
