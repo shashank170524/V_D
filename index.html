@@ -10,24 +10,6 @@
 
 <style>
 /* ---------------- GLOBAL ---------------- */
-  /* CONFETTI */
-.confetti-piece{
-  position:fixed;
-  width:10px;
-  height:10px;
-  background:red;
-  opacity:0.8;
-  pointer-events:none;
-  z-index:9999;
-  animation:confettiFall 4s linear forwards;
-  border-radius:50%;
-}
-
-@keyframes confettiFall{
-  0%{transform:translateY(0) rotate(0deg);}
-  100%{transform:translateY(100vh) rotate(360deg);}
-}
-
 :root{
   --primary:#ff4d88;
   --secondary:#a64dff;
@@ -149,19 +131,6 @@ button:hover{
   to{opacity:1;transform:translateY(0);}
 }
 
-  <!-- VALENTINE'S MESSAGE -->
-<section id="valentine">
-  <div class="glass">
-    <h1>💌 Happy Valentine's Day My Cute Little Valentine 💌</h1>
-    <p>
-      You enlighten my life with your charm and warmth, and it feels safe around you. 
-      Your warmth gives me a feeling of belief in myself and self-confidence to conquer 
-      the tasks and work being thrown one after another.
-    </p>
-  </div>
-</section>
-
-  
 /* ---------------- TIMELINE ---------------- */
 .timeline-card{
   margin:10px;
@@ -275,6 +244,23 @@ button:hover{
   margin-bottom:20px;
 }
 
+/* ---------------- CONFETTI ---------------- */
+.confetti-piece{
+  position:fixed;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  opacity:0.8;
+  pointer-events:none;
+  z-index:9999;
+  animation:confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall{
+  0%{transform:translateY(0) rotate(0deg);}
+  100%{transform:translateY(100vh) rotate(360deg);}
+}
+
 /* ---------------- RESPONSIVE ---------------- */
 @media(max-width:768px){
   h1{font-size:2rem;}
@@ -285,14 +271,29 @@ button:hover{
 </head>
 
 <body>
+
 <div id="loader">Loading Our Love...</div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
 
 <!-- HERO -->
 <section id="hero">
   <div class="glass">
     <h1>Our Love Story 💖</h1>
     <p>Bubu, I love uu a lot and with you the journey has been amazing. There have been times where I lost my mind but you stood there by my side and we made it together. Thank you for everything. Yours only.</p>
-    <button onclick="scrollToSection('timeline')">Start Our Journey</button>
+    <button onclick="scrollToSection('valentine')">Next Surprise 💌</button>
+  </div>
+</section>
+
+<!-- VALENTINE'S MESSAGE -->
+<section id="valentine">
+  <div class="glass">
+    <h1>💌 Happy Valentine's Day My Cute Little Valentine 💌</h1>
+    <p>You enlighten my life with your charm and warmth, and it feels safe around you. Your warmth gives me a feeling of belief in myself and self-confidence to conquer the tasks and work being thrown one after another.</p>
+    <button onclick="scrollToSection('timeline')">See Our Memories 💖</button>
   </div>
 </section>
 
@@ -338,10 +339,7 @@ button:hover{
 <script>
 /* ---------------- LOADER ---------------- */
 window.onload = function(){
-  setTimeout(()=>{
-    document.getElementById("loader").style.display="none";
-  },1500);
-
+  setTimeout(()=>{document.getElementById("loader").style.display="none";},1500);
   createFloatingHearts();
   initMemoryGame();
 }
@@ -368,8 +366,23 @@ function increaseLove(){
     document.getElementById("meter").innerText = love + "%";
     document.getElementById("meter").style.color = "hotpink";
     document.getElementById("meter").style.fontWeight = "bold";
-  } else {
-    alert("Love is already overflowing! 💖💖💖");
+  } 
+  if(love>=100){
+    alert("Love is overflowing! 💖💖💖");
+    launchConfetti();
+  }
+}
+
+/* ---------------- CONFETTI ---------------- */
+function launchConfetti(){
+  for(let i=0;i<100;i++){
+    let confetti = document.createElement("div");
+    confetti.className = "confetti-piece";
+    confetti.style.background = `hsl(${Math.random()*360}, 70%, 60%)`;
+    confetti.style.left = Math.random()*100 + "vw";
+    confetti.style.animationDuration = 3 + Math.random()*2 + "s";
+    document.body.appendChild(confetti);
+    setTimeout(()=>{confetti.remove();},5000);
   }
 }
 
@@ -444,32 +457,6 @@ function createFloatingHearts(){
     document.body.appendChild(heart);
   }
 }
-  function launchConfetti(){
-  for(let i=0;i<100;i++){
-    let confetti = document.createElement("div");
-    confetti.className = "confetti-piece";
-    confetti.style.background = `hsl(${Math.random()*360}, 70%, 60%)`;
-    confetti.style.left = Math.random()*100 + "vw";
-    confetti.style.animationDuration = 3 + Math.random()*2 + "s";
-    document.body.appendChild(confetti);
-    setTimeout(()=>{confetti.remove();},5000);
-  }
-}
-
-/* Modify Love Meter function to trigger confetti */
-function increaseLove(){
-  if(love<100){
-    love+=20;
-    document.getElementById("meter").innerText = love + "%";
-    document.getElementById("meter").style.color = "hotpink";
-    document.getElementById("meter").style.fontWeight = "bold";
-  } 
-  if(love>=100){
-    alert("Love is overflowing! 💖💖💖");
-    launchConfetti();
-  }
-}
-
 </script>
 </body>
 </html>
